@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-com      <Text>Kade - An E-commerce Platform</Text>
+     <Text>Kade - An E-commerce Platform</Text>
       <StatusBar style="auto" />
     </View>
   );
