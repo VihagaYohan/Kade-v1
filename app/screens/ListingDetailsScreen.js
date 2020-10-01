@@ -1,26 +1,33 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import Colors from "../config/colors";
 import AppText from "../components/AppText";
 import ListItem from "../components/ListItem";
 
-export default function ListingDetails() {
+export default function ListingDetails({onPress}) {
   return (
-    <View>
-      <Image style={styles.image} source={require("../assets/jacket.jpg")} />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>Red Jacket For Sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View>
+        <Image style={styles.image} source={require("../assets/jacket.jpg")} />
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title}>Red Jacket For Sale</AppText>
+          <AppText style={styles.price}>$100</AppText>
+        </View>
+        <View style={styles.userContainer}>
+          <ListItem
+            image={require("../assets/mosh.jpg")}
+            title="Mosh Hamedani"
+            subTitle="Sub Title"
+          />
+        </View>
       </View>
-      <View style={styles.userContainer}>
-        <ListItem
-          image={require("../assets/mosh.jpg")}
-          title="Mosh Hamedani"
-          subTitle="Sub Title"
-        />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -41,7 +48,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 10,
   },
-  userContainer:{
-      marginVertical:10
-  }
+  userContainer: {
+    marginVertical: 10,
+  },
 });
