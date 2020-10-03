@@ -40,9 +40,11 @@ export default function AppPicker({
             />
           )}
           {selectedItem ? (
-            <AppText style={styles.text}>{selectedItem.label}</AppText>
+            //<AppText style={styles.text}>{selectedItem.label}</AppText>
+            <AppText style={styles.text}>Electronics</AppText>
           ) : (
-            <AppText style={styles.placeholder}>{placeholder}</AppText>
+            //<AppText style={styles.placeholder}>{placeholder}</AppText>
+            <AppText style={styles.placeholder}>Electronics</AppText>
           )}
           <MaterialCommunityIcons
             name="chevron-down"

@@ -10,24 +10,24 @@ import Colors from "../config/colors";
 import AppText from "../components/AppText";
 import ListItem from "../components/ListItem";
 
-export default function ListingDetails({onPress}) {
+export default function ListingDetails({ route }) {
+  const listing = route.params;
+  console.log(listing)
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View>
-        <Image style={styles.image} source={require("../assets/jacket.jpg")} />
-        <View style={styles.detailsContainer}>
-          <AppText style={styles.title}>Red Jacket For Sale</AppText>
-          <AppText style={styles.price}>$100</AppText>
-        </View>
-        <View style={styles.userContainer}>
-          <ListItem
-            image={require("../assets/mosh.jpg")}
-            title="Mosh Hamedani"
-            subTitle="Sub Title"
-          />
-        </View>
+    <View>
+      <Image style={styles.image} source={listing.image}/>
+      <View style={styles.detailsContainer}>
+        <AppText style={styles.title}>{listing.title}</AppText>
+        <AppText style={styles.price}>${listing.price}</AppText>
       </View>
-    </TouchableWithoutFeedback>
+      <View style={styles.userContainer}>
+        <ListItem
+          image={require("../assets/mosh.jpg")}
+          title="Mosh Hamedani"
+          subTitle="Sub Title"
+        />
+      </View>
+    </View>
   );
 }
 

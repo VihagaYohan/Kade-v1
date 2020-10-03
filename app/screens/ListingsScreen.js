@@ -4,6 +4,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import Screen from "../components/Screen";
 import Card from "../components/Card";
 import Colors from '../config/colors'
+import routes from '../navigation/routes'
 
 const listings = [
   {
@@ -12,22 +13,22 @@ const listings = [
     price: 100,
     image: require("../assets/jacket.jpg"),
   },
-  { id: 2, title: "Couch", price: 100, image: require("../assets/jacket.jpg") },
+  { id: 2, title: "Couch", price: 80, image: require("../assets/couch.jpg") },
   {
     id: 3,
-    title: "Red Jacket",
-    price: 100,
-    image: require("../assets/jacket.jpg"),
+    title: "Chair",
+    price: 150,
+    image: require("../assets/chair.jpg"),
   },
   {
     id: 4,
-    title: "Red Jacket",
-    price: 100,
-    image: require("../assets/jacket.jpg"),
+    title: "Product 4",
+    price: 200,
+    image: require("../assets/background.jpg"),
   },
 ];
 
-export default function ListingsScreen() {
+export default function ListingsScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -38,6 +39,7 @@ export default function ListingsScreen() {
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
+            onPress={()=>navigation.navigate(routes.LISTING_DETAILS,item)}
           />
         )}
       />

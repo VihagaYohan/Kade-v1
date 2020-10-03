@@ -1,6 +1,20 @@
-import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Platform, StatusBar } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  Button,
+  Image,
+  View,
+  TextInput,
+  Platform,
+  StatusBar,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // components
 import AppText from "./app/components/AppText";
@@ -11,6 +25,8 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AppTextInput from "./app/components/Form/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
+import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 
 // screens
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -19,8 +35,15 @@ import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
-import LoginScreen from './app/screens/LoginScreen'
-import ListingEditScreen from './app/screens/ListingEditScreen'
+import LoginScreen from "./app/screens/LoginScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
+
+// navigators
+import AuthNavigator from "./app/navigation/AuthNavigation";
+import AppNavigator from './app/navigation/AppNavigator'
+
+// navigation theme
+import navigationTheme from "./app/navigation/navigationTheme";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -29,11 +52,20 @@ const categories = [
   { label: "Stationary Items", value: 4 },
 ];
 
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "rgb(255, 45, 85)",
+  },
+};
+
 export default function App() {
-  const [firstName, setFirstName] = useState("");
-  const [category, setCategory] = useState();
+  console.log(MyTheme);
   return (
-    <ListingEditScreen/>
+    <NavigationContainer theme={MyTheme}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
 
